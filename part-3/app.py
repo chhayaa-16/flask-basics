@@ -47,6 +47,17 @@ def projects():
         {'name': 'Weather App', 'status': 'Planned', 'tech': 'JavaScript'},
     ]
     return render_template('projects.html', projects=project_list)
+@app.route('/grades')
+def grades():
+    # Dictionary of subjects and grades
+    grades_data = {
+        "Mathematics": "A",
+        "Physics": "B+",
+        "Computer Science": "A+",
+        "English": "B"
+    }
+    return render_template('grades.html', grades=grades_data)
+
 
 
 if __name__ == '__main__':

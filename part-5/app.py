@@ -14,16 +14,38 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 # =============================================================================
-# YOUR DATA - Customize this section with your own information!
+#YOUR DATA - Customize this section with your own information! 
 # =============================================================================
 
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+
+        # YOUR DATA - Customize this section with your own information!
+
+        name = request.form.get('name')
+        email = request.form.get('email')
+        course = request.form.get('course')
+        college = request.form.get('college')
+        city = request.form.get('city')
+
+        return render_template(
+            'result.html',
+            name=name,
+            email=email,
+            course=course,
+            college=college,
+            city=city
+        )
+
 PERSONAL_INFO = {
-    'name': 'Your Name',
+    'name': 'Chhaya Patil',
     'title': 'Web Developer',
     'bio': 'A passionate developer learning Flask and web development.',
-    'email': 'your.email@example.com',
-    'github': 'https://github.com/yourusername',
-    'linkedin': 'https://linkedin.com/in/yourusername',
+    'email': 'chhayapatil2001@example.com',
+    'github': 'https://github.com/chhayaa-16',
+    'linkedin': 'https://www.linkedin.com/in/chhaya-patil-311390307?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
 }
 
 SKILLS = [
@@ -31,13 +53,14 @@ SKILLS = [
     {'name': 'HTML/CSS', 'level': 75},
     {'name': 'Flask', 'level': 60},
     {'name': 'JavaScript', 'level': 50},
-    {'name': 'SQL', 'level': 45},
+    {'name': 'SQL', 'level': 75},
 ]
 
 PROJECTS = [
     {'id': 1, 'name': 'Personal Website', 'description': 'A Flask-powered personal portfolio website.', 'tech': ['Python', 'Flask', 'HTML', 'CSS'], 'status': 'Completed'},
     {'id': 2, 'name': 'Todo App', 'description': 'A simple task management application.', 'tech': ['Python', 'Flask', 'SQLite'], 'status': 'In Progress'},
     {'id': 3, 'name': 'Weather Dashboard', 'description': 'Display weather data from an API.', 'tech': ['Python', 'Flask', 'API'], 'status': 'Planned'},
+    {'id': 4, 'name': ' word venturegame', 'description':'this is gaming app to find word in maze it has a multiples levels .','tech':['html','css','javascript'],'status': 'completed'},
 ]
 
 
@@ -74,9 +97,33 @@ def project_detail(project_id):
 def contact():
     return render_template('contact.html', info=PERSONAL_INFO)
 
+BLOG_POSTS = [
+    {'title': 'Learning Flask', 'content': 'Flask is a lightweight Python web framework.'},
+    {'title': 'Why MCA?', 'content': 'MCA helps build strong foundations in software development.'},
+]
+
+@app.route('/blog')
+def blog():
+    return render_template('blog.html', info=PERSONAL_INFO, posts=BLOG_POSTS)
+
+@app.route('/skill/<skill_name>')
+def skill_detail(skill_name):
+    related_projects = []
+
+    for project in PROJECTS:
+        if skill_name.capitalize() in project['tech']:
+            related_projects.append(project)
+
+    return render_template(
+        'skill.html',
+        skill=skill_name,
+        projects=related_projects,
+        info=PERSONAL_INFO
+    )
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5001,debug=True)
 
 
 # =============================================================================

@@ -72,6 +72,24 @@
             margin: 15px 0;
             overflow-x: auto;
         }
+
+        <!-- Existing profile content -->
+<h1>Profile</h1>
+<p>Name: {{ name }}</p>
+
+<!-- Exercise 3.1: Additional fields -->
+<p>Email: {{ email }}</p>
+<p>City: {{ city }}</p>
+
+<!-- Exercise 3.2: Conditional display -->
+<p>Status: 
+{% if is_enrolled %}
+    Enrolled
+{% else %}
+    Not Enrolled
+{% endif %}
+</p>
+
     </style>
 </head>
 <body>

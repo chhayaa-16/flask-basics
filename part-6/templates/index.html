@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Task Dashboard</h2>
+
+<div class="dashboard">
+    <div class="card">
+        <h3 id="total">0</h3>
+        <p>Total Tasks</p>
+    </div>
+    <div class="card">
+        <h3 id="completed">0</h3>
+        <p>Completed</p>
+    </div>
+</div>
+
+<h2>All Tasks</h2>
+
+{% for task in tasks %}
+<div class="task {{ task.priority }}">
+    <h3>{{ task.title }}</h3>
+
+    <span class="badge 
+        {% if task.status=='Completed' %}completed
+        {% elif task.status=='In Progress' %}progress
+        {% else %}pending{% endif %}">
+        {{ task.status }}
+    </span>
+
+    <p>Priority: {{ task.priority }}</p>
+    <a href="/task/{{ task.id }}">View Details</a>
+</div>
+{% endfor %}
+
+<script>
+document.getElementById("total").innerText = {{ tasks|length }};
+document.getElementById("completed").innerText =
+    {{ tasks | selectattr("status","equalto","Completed") | list | length }};
+</script>
+
+{% endblock %}

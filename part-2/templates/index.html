@@ -52,10 +52,20 @@
 
         <p>This page is being served from an HTML file in the <code>templates/</code> folder.</p>
 
+        <nav>
+    <a href="/">Home</a> |
+    <a href="/about">About</a> |
+    <a href="/contact">Contact</a>
+</nav>
+<section>
+    <h2>About This Project</h2>
+    <p>This project is designed to help MCA students learn Flask basics with practical exercises.</p>
+</section>
         <div class="highlight">
             <strong>What's happening?</strong>
             <p>When you visit this URL, Flask:</p>
             <ol>
+
                 <li>Receives your browser's request</li>
                 <li>Matches the URL to the <code>@app.route('/')</code></li>
                 <li>Calls the <code>home()</code> function</li>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do App</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #e3f2fd, #f8fbff, #e7f1ff);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    margin: 0;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    width: 82%;
+    margin: auto;
+    background: rgba(255,255,255,0.96);
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0,40,100,0.25);
+    animation: fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity:0; transform: translateY(20px); }
+    to { opacity:1; transform: translateY(0); }
+}
+
+/* Dark Header */
+.header {
+    background: linear-gradient(135deg, #0a2540, #0d3b66);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.header h1 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+nav a {
+    margin: 0 15px;
+    color: #dbeafe;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+h2 {
+    color: #0d47a1;
+    border-left: 6px solid #1e3a8a;
+    padding-left: 10px;
+}
+
+/* Dashboard */
+.dashboard {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 1;
+    background: linear-gradient(135deg, #eef5ff, #fafdff);
+    padding: 22px;
+    text-align: center;
+    border-radius: 14px;
+    border-top: 4px solid #1e40af;
+    box-shadow: 0 10px 25px rgba(0,80,160,0.2);
+}
+
+.card h3 {
+    font-size: 32px;
+    color: #1e40af;
+}
+
+/* Task Card */
+.task {
+    background: linear-gradient(135deg, #fafdff, #eef6ff);
+    padding: 18px;
+    border-left: 7px solid #90caf9;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    box-shadow: 0 12px 25px rgba(0,40,100,0.25);
+    transition: 0.3s;
+}
+
+.task:hover {
+    transform: translateY(-4px);
+}
+
+/* Priority */
+.High { border-color: #e53935; }
+.Medium { border-color: #fb8c00; }
+.Low { border-color: #43a047; }
+
+/* Status */
+.badge {
+    padding: 6px 14px;
+    border-radius: 30px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.completed { background: #2e7d32; }
+.pending { background: #616161; }
+.progress { background: #1565c0; }
+
+/* Form */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #cfd8dc;
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px 22px;
+    border: none;
+    background: linear-gradient(135deg, #1e88e5, #42a5f5);
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>📝 Personal To-Do List App</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/add">Add Task</a>
+        <a href="/about">About</a>
+    </nav>
+</div>
+
+{% block content %}{% endblock %}
+
+</div>
+</body>
+</html>
